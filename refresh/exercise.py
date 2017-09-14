@@ -2,11 +2,7 @@
 def who_do_you_know():
     #Ask user for list of people they know, #split string into a list, #return that list
     people_list = input("Please add a list of people you'd like to add to the list : ")
-    people_total = people_list.split(",")
-    print(people_total)
-    cleaned_up_list = []
-    for person in people_total:
-        cleaned_up_list.append(person.strip())
+    cleaned_up_list = [peep.strip() for peep in people_list.split(',')]
     print(cleaned_up_list)
     return cleaned_up_list
 
@@ -17,8 +13,8 @@ def ask_user():
     else:
         print("You know {}, was not in the list".format(name))
 
-# who_do_you_know()
-ask_user()
+who_do_you_know()
+# ask_user()
 
 
 
