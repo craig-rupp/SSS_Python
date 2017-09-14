@@ -3,6 +3,7 @@ if should_continue:
     print(should_continue)
 
 known_people = ["Craig", "John", "Elizabeth"]
+print(known_people)
 person = input("Enter the person you know : ")
 
 if person in known_people:
@@ -31,4 +32,3 @@ def user_menu(choice):
         return "Add"
     elif choice == "q":
         return "Quit"
-#asdfasdf
