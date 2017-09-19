@@ -11,16 +11,19 @@ class Student:
     #     ##return a new student called 'friend_name' in same school as self
     #     return Student(friend_name, self.school)
     @classmethod
-    def friend(cls, origin, friend_name, salary):
-        return cls(friend_name, origin.school, salary)
+    def friend(cls, origin, friend_name, *args):
+        return cls(friend_name, origin.school, *args) #multiple args being passed
 
 
 class WorkingStudent(Student):
-    def __init__(self, name, school, salary):
+    def __init__(self, name, school, salary, profession):
         super().__init__(name, school)
         self.salary = salary
+        self.profession = profession
 
-teddy = WorkingStudent('Teddy', 'Oxford', 800)
+teddy = WorkingStudent('Teddy', 'Oxford', 800, 'Gardener')
 print(teddy.school)
-teddy_friend = WorkingStudent.friend(teddy, 'Eric', 750)
+teddy_friend = WorkingStudent.friend(teddy, 'Eric', 750, 'Potter')
 print(teddy_friend.name)
+print(teddy_friend.salary)
+print(teddy.profession)
