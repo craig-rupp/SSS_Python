@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, render_template
 ##package is the lower case, class is upper clase
 
 app = Flask(__name__)
@@ -28,7 +28,7 @@ stores = [
 
 @app.route('/')
 def home():
-    return "Hello, world"
+    return render_template('index.html')
 
 # POST /store_data {name:}
 @app.route('/store', methods=['POST'])
