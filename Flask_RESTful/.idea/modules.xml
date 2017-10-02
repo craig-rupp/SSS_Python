@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Flask_RESTful.iml" filepath="$PROJECT_DIR$/.idea/Flask_RESTful.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../.idea/Python-Local.iml" filepath="$PROJECT_DIR$/../.idea/Python-Local.iml" />
     </modules>
   </component>
 </project>
