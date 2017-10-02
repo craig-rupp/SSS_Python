@@ -7,7 +7,7 @@ stores = [
         'name': 'Yo-Store',
         'items': [
             {
-                'name': 'Item_1',
+                'name': 'Cerveza',
                 'price': 15
             }
         ]
