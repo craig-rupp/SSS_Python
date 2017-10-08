@@ -1,6 +1,6 @@
 from flask import Flask, request
 from flask_restful import Resource, Api
-from flask_jwt import JWT
+from flask_jwt import JWT, jwt_required
 
 from security import authenticate, identity
 
@@ -15,6 +15,7 @@ items = [
 ]
 
 class Item(Resource):
+    @jwt_required()
     def get(self, name):
         # for item in items:
         #     if item['name'] == name:
@@ -34,6 +35,12 @@ class Item(Resource):
         }
         items.append(item)
         return item, 201
+
+    def delete(self, name):
+        global items
+        items = list(filter(lambda x: x['name'] != name, items))
+        return {'message' : 'Item, {}, deleted'.format(name)}
+        #don't forget global items variable definition
 
 class ItemList(Resource):
     def get(self):
