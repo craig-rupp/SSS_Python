@@ -29,14 +29,15 @@ def confirm(dict):
         while answer not in ["y", "n"]:
             answer = input("Confirm grades : " + str(grades) + ", for " + name + " : [Y/N]").lower()
         if answer == "y":
-        print("You have confirmed grades : " + str(grades) + " for " + name)
-        average = input("Would you like to have an average of the student's grades? : [Y/N]").lower()
+            print("You have confirmed grades : " + str(grades) + " for " + name)
+            average = input("Would you like to have an average of the student's grades? : [Y/N]").lower()
         if average == "y":
-            calculate_student_average(dict)
+            print(individual_student)
+            calculate_student_average(individual_student)
         elif answer != "y":
             individual_student["marks"] = []
             print(name + ", has had their grades removed")
-        
+
 def calculate_student_average(student):
     # calculate average, set new key in dictionary for average, print out student
     student_average = sum(student["marks"])/len(student["marks"])
