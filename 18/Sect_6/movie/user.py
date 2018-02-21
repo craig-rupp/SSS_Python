@@ -7,6 +7,16 @@ class User:
     def __repr__(self):
         return "<User {}>".format(self.name)
 
+    def trim_movie(self, film_name):
+        if ' ' in film_name:
+            film_name.strip()
+            if ' ' in film_name:
+               return " ".join(film_name.split())
+            else:
+                return film_name
+        else:
+            return film_name
+
     def add_movie(self, name, genre, year):
         self.movies.append(Movie(name, genre, year, False))
 
@@ -18,24 +28,26 @@ class User:
         watched_movies = list(filter(lambda x: x.watched, self.movies))
         return watched_movies
 
-    def save_user_to_file(self):
-        with open("{}.txt".format(self.name), 'w') as f:
-            f.write(self.name + "\n")
-            for movie in self.movies:
-                f.write("{}, {}, {}, {} \n".format(movie.name, movie.genre, str(movie.year), str(movie.watched)))
+    def set_watched(self, name):
+        for movie in self.movies:
+            if movie.name == name:
+                movie.watched == True
+
+    def json(self):
+        return {
+            'name' : self.name,
+            'movies' : [
+                movie.json() for movie in self.movies
+            ]
+        }
 
     @classmethod
-    def load_from_file(cls, filename):
-        with open(filename, 'r') as f:
-            content = f.readlines()
-            #f.readlines() returns a list
-            username = content[0]
-            movies = []
-            for line in content[1:]:
-                movie_data = line.split(", ")
-                movies.append(Movie(movie_data[0], movie_data[1], movie_data[2], movie_data[3] == "True"))
-
-            user = cls(username)
-            user.movies = movies
-            return user
-
+    def from_json(cls, json_data):
+        #use arg to create user & movies, put movies in user object and return user
+        movies = []
+        for movie_data in json_data["movies"]:
+            movies.append(Movie.to_json(movie_data))
+            #movies.append(Movie(movie["name"], movie["genre"], movie["year"], movie["watched"]))
+        user = cls(json_data["name"])
+        user.movies = movies
+        return user
