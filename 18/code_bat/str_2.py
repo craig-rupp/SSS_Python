@@ -93,22 +93,31 @@ print(end_other('Hiabc', 'abc'))
 def xyz_there(a):
 	string_check = []
 	a_list = list(a)
-	count = 0
 	for i in range(len(a_list)):
-		index_check = i + 2
-		if a_list[i] == 'x' and a_list[i+1] != 'x' and a_list[i-1] != '.' and index_check < len(a_list):
-			print(i, index_check)
-			string_check.append(''.join(a_list[i:i+3]))
-	print(string_check)
+	  index_check = i + 2
+	  if index_check < len(a_list) and a_list[i] == 'x' and a_list[i+1] != 'x' and a_list[i-1] != '.':
+	    string_check.append(''.join(a_list[i:i+3]))
 	if 'xyz' in string_check:
 		return True
 	else:
 		return False
 
-#def xyz_again(a):
+#print(xyz_there('abcxyzxbdxylxy'))
+#print(xyz_there('xy'))
+
+def xyz_again(a):
+	#Same as Above (problem that is just another solution)
+	i = 0
+	print(a[0:].index('xyz')) #return index where this first occurs
+	print(a[i - 1 + a[i:].index('xyz')])
+	while 'xyz' in a[i:]:
+		if a[i- 1 + a[i:].index('xyz')] != '.':
+			return True
+		i += a[i:].index('xyz') + 2
+		print(i)
+
+xyz_again('abcxydxbdxylxyzx')
 
 
-print(xyz_there('abcxyzxbdxylxy'))
-print(xyz_there('xy'))
 
 
