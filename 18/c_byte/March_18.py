@@ -113,7 +113,16 @@ def AlphabetSoup(str):
 # true if the characters a and b are separated by exactly 3 places anywhere in the string at least 
 # once (ie. "lane borrowed" would result in true because there is exactly three characters between a and b). 
 # Otherwise return the string false. 
-
+def ABCheck(str): 
+    str_list = list(str)
+    b_check = []
+    for i in range(len(str_list)):
+        if str_list[i] == 'a' and i < (len(str_list)-4):
+            b_check.append(str_list[i + 4])
+        if str_list[i] == 'a' and i >= 4:
+            b_check.append(str_list[i-4])
+    return 'true' if 'b' in b_check else 'false'
+print ABCheck(raw_input().lower())
 
 
 
