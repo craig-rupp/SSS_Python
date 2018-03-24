@@ -89,7 +89,30 @@ def CheckNums(num1,num2):
     sol = 'true' if num2 > num1 else 'false'
     return sol
 
+#Output passed num into format of 'hour:minutes'
+def TimeConvert(num): 
+    hour = ''
+    minutes = int
+    if num >= 60:
+        hour = str(int(round(num/60)))
+        minutes = num - (int(hour) * 60)
+    else:
+        hour = '0'
+        minutes = num
+    return '{}:{}'.format(hour, str(minutes))
+# keep this function call here  
+#print TimeConvert(raw_input())
 
+#Return string argument in alphabetical order
+def AlphabetSoup(str): 
+    return ''.join(sorted(list(str)))
+# keep this function call here  
+#print AlphabetSoup(raw_input())
+
+# have the function ABCheck(str) take the str parameter being passed and return the string 
+# true if the characters a and b are separated by exactly 3 places anywhere in the string at least 
+# once (ie. "lane borrowed" would result in true because there is exactly three characters between a and b). 
+# Otherwise return the string false. 
 
 
 
