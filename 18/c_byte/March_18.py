@@ -125,4 +125,33 @@ def ABCheck(str):
 print ABCheck(raw_input().lower())
 
 
+def Palindrome(string): 
+    if string.count(' ') < 1:
+        return 'true' if string[::-1] == string else 'false'
+    else:
+        string_list = list(string)
+        reverse_string_arr = [x for x in string_list[::-1] if x != ' ']
+        string_w_space_index = [index for index, value in enumerate(string_list) if value == ' ']
+        adjusted_index = []
+        for i in range(len(string_w_space_index)):
+            if i < 1:
+                adjusted_index.append(string_w_space_index[i])
+            else:
+                adjusted_index.append(string_w_space_index[i] - i)
+        backwards_string = ''
+        for char in range(len(reverse_string_arr)):
+            if char in adjusted_index:
+                backwards_string += ' ' + reverse_string_arr[char]
+            else:
+                backwards_string += reverse_string_arr[char]
+    return 'true' if backwards_string == string else 'false'
+#print Palindrome(raw_input())
+
+def Palindrome(string):
+    arg_string = ''.join([x for x in string[::] if x != ' '])
+    check_string = ''.join([x for x in string[::-1] if x != ' '])
+    return 'true' if arg_string == check_string else 'false'
+#print Palindrome(raw_input())
+
+
 
