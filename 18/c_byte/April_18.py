@@ -64,9 +64,40 @@ def CountingMinutesI(str):
     return difference
 #print CountingMinutesI(raw_input())
 
+def to_minutes(s):
+    t = [int(t) for t in s[:-2].split(':')]
+    print(t)
+    if s.endswith('pm'):
+        t[0] += 12
+    return t[0] * 60 + t[1]
+
+def CountingMinutes(string):
+    mins = [to_minutes(t) for t in string.split('-')]
+    print(mins)
+    res = mins[1] - mins[0]
+    if res < 0:
+        res = 24 * 60 + res
+    return res
 
 
+#print(CountingMinutes("12:15pm-12:25am"))
 
+def MeanMode(arr): 
+    mode = max(arr, key=arr.count)
+    mean = sum(arr) / len(arr)
+    return 1 if mode == mean else 0
+#print MeanMode(raw_input())
 
+def secondMeanMode(arr): 
+  mean = float(sum(arr)/len(arr))
+  nmode = max([arr.count(i) for i in arr])
+  for i in arr:
+    if arr.count(i) == nmode:
+      mode = i
+  print(mode)
+  return 1 if mean == mode else 0
+
+#print(secondMeanMode([1, 5, 3, 3, 4, 2]))
+#print(secondMeanMode([1, 2, 2, 3, 1]))
 
 
