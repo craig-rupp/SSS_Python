@@ -36,3 +36,33 @@ def ArithGeo(arr):
 # keep this function call here  
 # to see how to enter arguments in Python scroll down
 #print ArithGeo(raw_input())
+
+def ArrayAdditionI(arr):
+    max_value = (max(arr))
+    del arr[arr.index(max(arr))]
+    power_set = [[]]
+    for i in range(len(arr)):
+        for j in range(len(power_set)):
+            temp = [arr[i]] + power_set[j]
+            power_set.append(temp)
+            if sum(temp) == max_value:
+                return 'true'
+    return 'false'
+#print ArrayAdditionI(raw_input())  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
