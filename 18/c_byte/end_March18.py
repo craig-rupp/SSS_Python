@@ -48,7 +48,44 @@ def ArrayAdditionI(arr):
             if sum(temp) == max_value:
                 return 'true'
     return 'false'
-#print ArrayAdditionI(raw_input())  
+#print ArrayAdditionI(raw_input()) 
+
+
+def NumberAddition(s): 
+    s_obj = {}
+    for char in range(len(s)):
+        if s[char].isdigit():
+            s_obj[char] = s[char]
+    n_str = ''
+    n_arr = [x for x in s_obj]
+    for i in range(len(n_arr)):
+        for j, k in s_obj.items():
+            #print(i, n_arr[i], j, k)
+            if i == j:
+                n_str += str(k)
+            elif n_arr[i] == j and j != i:
+                n_str += ' {}'.format(str(k))
+    return sum(map(int, n_str.split(' ')))
+        
+        
+print NumberAddition("Won90 8")   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
