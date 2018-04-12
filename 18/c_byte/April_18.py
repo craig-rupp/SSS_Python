@@ -100,4 +100,38 @@ def secondMeanMode(arr):
 #print(secondMeanMode([1, 5, 3, 3, 4, 2]))
 #print(secondMeanMode([1, 2, 2, 3, 1]))
 
+def DashInsert(s):
+    new_string = ' '
+    for char in range(len(s)):
+        if char <= len(s) - 2 and int(s[char]) % 2 != 0 and int(s[char + 1]) % 2 != 0:
+            new_string += s[char] + '-'
+        else:
+            new_string += s[char]
+    return new_string        
+#print DashInsert(raw_input())
+
+def SwapCase(s):
+    new_string = ''
+    for char in range(len(s)):
+        if s[char].isalpha():
+            if s[char].isupper():
+                new_string += s[char].lower()
+            else:
+                new_string += s[char].upper()
+        else:
+            new_string += s[char]
+    return new_string
+#print SwapCase(raw_input())
+
+def swap(ch):
+  return ch.lower() if ch.isupper() else ch.upper()
+
+def SwapCase(s): 
+  return ''.join([swap(ch) for ch in s]) 
+
+
+
+
+
+
 
