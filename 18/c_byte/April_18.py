@@ -157,6 +157,21 @@ def NumberAddition(s):
 
 
 
+def OffLineMinimum(strArr):
+    new_str = []
+    for i in range(len(strArr)):
+        if strArr[i] == 'E':
+            temp = min(strArr[:i])
+            if temp not in new_str:
+                new_str.append(temp)
+            elif temp in new_str:
+                new_arr = list(filter(lambda x: x != 'E' and x not in new_str, strArr[:i]))
+                new_str.append(sorted(new_arr)[0])
+    return ','.join(new_str)
+print OffLineMinimum(raw_input())
+
+
+
 
 
 
