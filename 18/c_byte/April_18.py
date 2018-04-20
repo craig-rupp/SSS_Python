@@ -155,7 +155,36 @@ def NumberAddition(s):
     return sum([int(x) for x in just_n])
 #print NumberAddition(raw_input())
 
+def ThirdGreatest(strArr): 
+    return sorted(strArr, key=len, reverse=True)[2]
+#print ThirdGreatest(raw_input())
 
+def PowersofTwo(num): 
+    return 'true' if bin(num).count('1') == 1 else 'false'
+#print PowersofTwo(raw_input())
+
+def AdditivePersistence(num):
+    arr = list(str(num))
+    while len(arr) > 1:
+        combined = 0
+        for i in range(len(arr)):
+            combined += int(arr[i])
+        return 1 + AdditivePersistence(combined)
+    return 0
+#print AdditivePersistence(raw_input())
+# This is a sweet recursive function! - take the num parameter being passed which will always be a 
+# positive integer and return its additive persistence which is the number of times you must add the 
+# digits in num until you reach a single digit.
+
+def MultiplicativePersistence(num): 
+    num_list = list(str(num))
+    count = reduce(lambda x, y: int(x)*int(y), num_list)
+    if len(num_list) >= 2:
+        return 1 + MultiplicativePersistence(count)
+    else:
+        return 0 
+#print MultiplicativePersistence(raw_input())
+# Similar to above, need to look at reduce more
 
 def OffLineMinimum(strArr):
     new_str = []
@@ -168,7 +197,7 @@ def OffLineMinimum(strArr):
                 new_arr = list(filter(lambda x: x != 'E' and x not in new_str, strArr[:i]))
                 new_str.append(sorted(new_arr)[0])
     return ','.join(new_str)
-print OffLineMinimum(raw_input())
+#print OffLineMinimum(raw_input())
 
 
 
