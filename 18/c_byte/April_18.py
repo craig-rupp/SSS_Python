@@ -199,6 +199,21 @@ def OffLineMinimum(strArr):
     return ','.join(new_str)
 #print OffLineMinimum(raw_input())
 
+def OverlappingRanges(arr): 
+    first_range = [x for x in range(arr[1]+1) if x >= arr[0]]
+    second_range = [x for x in range(arr[3]+1) if x >= arr[2]]
+    isct_len = len(set(first_range).intersection(second_range))
+    return 'true' if isct_len >= arr[4] else 'false'
+#print OverlappingRanges(raw_input())
+
+def Superincreasing(arr): 
+    count = 0 
+    for i in range(len(arr)):
+        if i < len(arr) - 1 and sum(arr[:i+1]) < arr[i+1]:
+            count += 1
+    return 'true' if count + 1 == len(arr) else 'false'
+#print Superincreasing(raw_input())
+
 
 
 
