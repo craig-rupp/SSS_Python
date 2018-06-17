@@ -110,3 +110,27 @@ def get_largest_numbers(d1, d2, d3):
             result['d{}'.format(i + 1)] = None 
     return result
 print(get_largest_numbers(d4, d5, d6))
+
+
+# The government wants you to "update" some books (in our case, dictionaries) and remove the words 
+# with descriptions including certain words. Write a function censor_dictionary that receives an 
+# dictionary named unclean_dictionary and a string flagged_word. If the flagged_word is in the 
+# description (value) of a word (key), remove the word (key-value pair) from the dictionary.
+# Hint:
+# You can use pop or del to remove key-value pairs.
+expressions = {
+    "pumped": "I'm so darn excited!",
+    "happy": "Yeehaw",
+    "agreeable": "darn tootin!"
+}
+print(expressions)
+print('should be different below')
+def censor_dictionary(unclean_dictionary, flagged_word):
+    potential_finds = []
+    for key, value in unclean_dictionary.items():
+        if flagged_word in value:
+            potential_finds.append(key)
+    for item in potential_finds:
+        del unclean_dictionary[item]
+    return unclean_dictionary
+print(censor_dictionary(expressions, "darn"))
