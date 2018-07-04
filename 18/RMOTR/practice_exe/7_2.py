@@ -28,3 +28,70 @@ class TempConverter(object):
         if self.temp_fahrenheit:
             return round(self.temp_fahrenheit, 1)
         return round(self.temp_celsius * 9/5 + 32, 1)
+
+# Define Point class here
+class Point(object):
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+# Define Line class here
+class Line(object):
+    def __init__(self, p1, p2):
+        self.p1 = p1
+        self.p2 = p2 
+        
+    def slope(self):
+        return (self.p2.y - self.p1.y) / (self.p2.x - self.p1.x)
+    
+    def y_intercept(self):
+        slp = self.slope()
+        return self.p1.y - (slp * self.p1.x)
+        
+    def formula(self):
+        rt_str = 'y = {m}x + {b:g}'
+        m = self.slope()
+        if m == 1:
+            m = ''
+        return rt_str.format(m=m, b=self.y_intercept())
+    
+p1 = Point(0, 1)
+p2 = Point(1, 2)
+l = Line(p1, p2)
+print(l.slope())
+print(l.y_intercept())
+print(l.formula())
+
+class Calculator(object):
+    def __init__(self):
+        self.cache = {}
+        
+    def add(self, a, b):
+        self.a = a 
+        self.b = b
+        add_key = self.cache.setdefault('add', [])
+        add_tup = (self.a, self.b, self.a + self.b)
+        if add_tup not in add_key:
+            add_key.append(add_tup)
+            return add_tup[-1]
+        search_list = self.cache['add']
+        pull_tupe = search_list.index(add_tup)
+        return search_list[pull_tupe][-1]
+        
+    def subtract(self, x, y):
+        self.x = x 
+        self.y = y 
+        sub_key = self.cache.setdefault('subtract', [])
+        sub_tup = (self.x, self.y, self.x - self.y)
+        if sub_tup not in sub_key:
+            sub_key.append(sub_tup)
+            return sub_tup[-1]
+        sub_search = self.cache['subtract']
+        pull_sub_tupe = sub_search.index(sub_tup)
+        return sub_search[pull_sub_tupe][-1]
+        
+        
+c = Calculator()
+print(c.cache)
+print(c.add(2, 3))
+print(c.add(2, 3))
